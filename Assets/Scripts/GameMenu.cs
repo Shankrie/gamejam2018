@@ -13,9 +13,16 @@ namespace TAHL.Transmission
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                GameMenuDialog.SetActive(true);
-                Time.timeScale = 0;
+            { 
+                if (GameMenuDialog.activeSelf)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    GameMenuDialog.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
         }
 
