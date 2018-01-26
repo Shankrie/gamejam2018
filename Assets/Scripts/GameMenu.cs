@@ -11,8 +11,16 @@ public class GameMenu : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameMenuDialog.SetActive(true);
-            Time.timeScale = 0;
+            if (GameMenuDialog.active)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                GameMenuDialog.SetActive(true);
+                Time.timeScale = 0;
+            }
+            
         }
     }
 
