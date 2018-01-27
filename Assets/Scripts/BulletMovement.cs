@@ -18,8 +18,6 @@ namespace TAHL.Transmission
 
         private int _instanceId = 0;
 
-        private const int SPEED = 20;
-        private const int DAMAGE = 100;
 
         // Use this for initialization
         void Start() {
@@ -41,7 +39,7 @@ namespace TAHL.Transmission
                 return;
 
             if (collision.gameObject.CompareTag(Globals.Tags.Enemy))
-                collision.GetComponent<Enemy>().InflictDamage(new Vector2(1, 1), DAMAGE);
+                collision.GetComponent<Enemy>().InflictDamage(new Vector2(1, 1), Globals.Constants.PLAYER_DAMAGE);
 
             // when hit collider except player then destroy itself
             Destroy(gameObject);
@@ -54,8 +52,8 @@ namespace TAHL.Transmission
 
             int directionY = facingRight ? 1 : -1;
 
-            _velocityX = -SPEED * Mathf.Cos(ToRadians(angle));
-            _velocityY = SPEED * directionY * Mathf.Sin(ToRadians(angle));
+            _velocityX = -Globals.Constants.BULLET_SPEED * Mathf.Cos(ToRadians(angle));
+            _velocityY = Globals.Constants.BULLET_SPEED * directionY * Mathf.Sin(ToRadians(angle));
         }
 
         private float ToRadians(float angle)

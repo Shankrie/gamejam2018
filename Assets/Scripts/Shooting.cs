@@ -17,7 +17,6 @@ namespace TAHL.Transmission
 
         private bool _dissapear = false;
 
-        private const float SHOOT_DELAY = 0.75f;
 
         public void Start()
         {
@@ -30,13 +29,13 @@ namespace TAHL.Transmission
         {
             if(_dissapear)
             {
-                if(_deathTime + Globals.Constants.DEATH_DELAY > Time.time)
+                if(_deathTime + Globals.Delays.DEATH> Time.time)
                     Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime);
                 return;
             }
 
             // Check if last time shot and current time diff is greater when shoot delay
-            if ((Time.time - _lastShotTime) > SHOOT_DELAY &&
+            if ((Time.time - _lastShotTime) > Globals.Delays.SHOT &&
                 Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Shoot();
