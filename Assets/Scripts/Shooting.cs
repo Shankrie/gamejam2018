@@ -40,6 +40,8 @@ namespace TAHL.Transmission
 
         private void Shoot()
         {
+            PlayShot();
+            Invoke("PlayLeverRifleCocking", 0.5f); 
             //Instantiate(bullet, transform.position, transform.rotation);
             GameObject movingBullet = GameObject.Instantiate(bullet, firePoint.transform.position, Quaternion.identity) as GameObject;
             movingBullet.transform.parent = null;
@@ -50,6 +52,20 @@ namespace TAHL.Transmission
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
             bulletMovement.Direction = new Vector2(mousePos.x, mousePos.y);
+        }
+
+        private void PlayShot()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("lever-action-rifle-shot");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+        }
+
+        private void PlayLeverRifleCocking()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("lever-action-rifle-cocking");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
         }
 
         /// <summary>
