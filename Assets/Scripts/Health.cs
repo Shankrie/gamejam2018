@@ -31,8 +31,8 @@ namespace TAHL.Transmission
             if(!_isDead && 1 < Time.time)
             {
                 // Destroy(gameObject);
-                _rb.constraints = RigidbodyConstraints2D.None;
-                _rb.AddForce(new Vector2(100, 300) * 100);
+                //_rb.constraints = RigidbodyConstraints2D.None;
+                //_rb.AddForce(new Vector2(100, 300) * 100);
                 _isDead = true;
             }
         }
