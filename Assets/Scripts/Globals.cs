@@ -5,7 +5,7 @@
         public static partial class Tags
         {
             public const string Player = "Player";
-            public const string Zombie = "Zombie";
+            public const string Enemy = "Enemy";
             public const string Flour = "Flour";
         }
 

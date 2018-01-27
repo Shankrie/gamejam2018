@@ -32,7 +32,7 @@ namespace TAHL.Transmission
             if (collision.transform.root.GetInstanceID() == _instanceId)
                 return;
 
-            if (collision.gameObject.CompareTag(Globals.Tags.Zombie) || 
+            if (collision.gameObject.CompareTag(Globals.Tags.Enemy) || 
                 collision.gameObject.CompareTag(Globals.Tags.Player))
             {
                 collision.GetComponent<Health>().InflictDamage(DAMAGE, new Vector2(1, 1));
