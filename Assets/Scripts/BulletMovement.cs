@@ -6,11 +6,11 @@ namespace TAHL.Transmission
     [RequireComponent(typeof(Rigidbody2D))]
     public class BulletMovement : MonoBehaviour {
 
-        public int Direction { set { _direction = value; } }
+        public Vector2 Direction { set { _direction = value; } }
         public int InstanceId { set { _instanceId = value; } }
 
         private Rigidbody2D _rb;
-        private int _direction = 1;
+        private Vector2 _direction = Vector2.zero;
 
         private int _instanceId = 0;
 
@@ -24,7 +24,7 @@ namespace TAHL.Transmission
 
         // Update is called once per frame
         void Update() {
-            _rb.velocity = new Vector2(SPEED * _direction, 0);
+            _rb.velocity = _direction;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -32,10 +32,13 @@ namespace TAHL.Transmission
             if (collision.transform.root.GetInstanceID() == _instanceId)
                 return;
 
-            if (collision.gameObject.CompareTag(Globals.Tags.Enemy) || 
-                collision.gameObject.CompareTag(Globals.Tags.Player))
+            if (collision.gameObject.CompareTag(Globals.Tags.Enemy))
             {
-                collision.GetComponent<Health>().InflictDamage(DAMAGE, new Vector2(1, 1));
+                collision.GetComponent<Enemy>().InflictDamage(new Vector2(1, 1), DAMAGE);
+            }
+            else if(collision.gameObject.CompareTag(Globals.Tags.Player))
+            {
+                collision.GetComponent<Health>().InflictDamage(new Vector2(1, 1), DAMAGE);
             }
     
             Destroy(gameObject);

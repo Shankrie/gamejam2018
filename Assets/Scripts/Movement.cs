@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class Movement : MonoBehaviour {
 
     public Image HealthBar;
+    public bool IsFacingRight { get {
+        return 
+            transform.rotation.y > -1.01 && 
+            transform.rotation.y < -0.98;
+        } }
 
     private Rigidbody2D _rb;
     private int _direction = 0;
@@ -87,8 +92,8 @@ public class Movement : MonoBehaviour {
         }
     }
 
-    public void FlipPlayer(bool isFacingRight)
+    public void FlipPlayer()
     {
-        transform.rotation = Quaternion.Euler(0, isFacingRight ? 0: 180, 0);
+        transform.rotation = Quaternion.Euler(0, IsFacingRight ? 0: 180, 0);
     }
 }

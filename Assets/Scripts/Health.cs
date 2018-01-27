@@ -37,7 +37,7 @@ namespace TAHL.Transmission
             }
         }
 
-        public void InflictDamage(int damage, Vector2 bulletForce)
+        public void InflictDamage(Vector2 bulletForce, int damage)
         {
             _health -= damage;
             if (_health <= 0)
