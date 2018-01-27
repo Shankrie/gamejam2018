@@ -335,22 +335,6 @@ Prefab:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 1759475109511944, guid: 34dc3ce3e74db024197e45bbfa350e00, type: 2}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002091107963824, guid: 34dc3ce3e74db024197e45bbfa350e00, type: 2}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 1359377033283670, guid: 34dc3ce3e74db024197e45bbfa350e00, type: 2}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698311427878650, guid: 34dc3ce3e74db024197e45bbfa350e00, type: 2}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34dc3ce3e74db024197e45bbfa350e00, type: 2}
   m_IsPrefabParent: 0
@@ -673,7 +657,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1485576430
+--- !u!1001 &1625059706
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
