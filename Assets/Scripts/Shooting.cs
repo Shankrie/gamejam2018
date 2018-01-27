@@ -24,6 +24,7 @@ namespace TAHL.Transmission
 
             //CalculateAngle();                
             _angle = CalculateAngle();
+
             transform.rotation = Quaternion.Euler(0, 0, -_angle - 270);
             if (_angle > 0)
             {
