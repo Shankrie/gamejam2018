@@ -7,10 +7,8 @@ namespace TAHL.Transmission
     [RequireComponent(typeof(Rigidbody2D))]
     public class Movement : MonoBehaviour
     {
-
         private Rigidbody2D _rb;
-        private int _direction = 0;
-
+        private int _direction = 0;      
 
 
         // Use this for initialization

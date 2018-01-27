@@ -36,7 +36,7 @@ namespace TAHL.Transmission {
             if (collision.gameObject.CompareTag(Globals.Tags.Zombie) || 
                 collision.gameObject.CompareTag(Globals.Tags.Player))
             {
-                collision.GetComponent<Health>().InflictDamage(DAMAGE);
+                collision.GetComponent<Health>().InflictDamage(DAMAGE, new Vector2(1, 1));
             }
     
             Destroy(gameObject);
