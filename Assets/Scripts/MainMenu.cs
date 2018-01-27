@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TAHL.Transmission
@@ -10,22 +8,22 @@ namespace TAHL.Transmission
 
         public void LoadGame()
         {
-            SceneManager.LoadScene((int)Constants.SceneIndex.Game1);
+            SceneManager.LoadScene((int)Globals.SceneIndex.Game1);
         }
 
         public void LoadHowTo()
         {
-            SceneManager.LoadScene((int)Constants.SceneIndex.HowToPlay);
+            SceneManager.LoadScene((int)Globals.SceneIndex.HowToPlay);
         }
 
         public void LoadOptions()
         {
-            SceneManager.LoadScene((int)Constants.SceneIndex.Options);
+            SceneManager.LoadScene((int)Globals.SceneIndex.Options);
         }
 
         public void LoadCredits()
         {
-            SceneManager.LoadScene((int)Constants.SceneIndex.Credits);
+            SceneManager.LoadScene((int)Globals.SceneIndex.Credits);
         }
 
         public void Exit()
