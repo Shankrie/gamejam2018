@@ -50,7 +50,7 @@ namespace TAHL.Transmission
             {
                 if(_deathTime + DEATH_DELAY > Time.time)
                 {
-                    Globals.RemoveCharacher(transform, _spriteRender, _deathTime, DEATH_DELAY);
+                    Globals.RemoveCharacher(transform, _spriteRender, _deathTime);
                 }
                 else
                 {

@@ -40,10 +40,11 @@ namespace TAHL.Transmission
             {
                 if(_deathTime + DEATH_DELAY > Time.time)
                 {
-                    Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime, DEATH_DELAY);
+                    Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime);
                 }
                 else
                 {
+                    Destroy(transform.GetChild(0).gameObject);
                     Destroy(gameObject);
                     _isDead = false;
                 }
@@ -58,6 +59,7 @@ namespace TAHL.Transmission
                 _isDead = true;
 
                 Shooting.enabled = false;
+                Shooting.Dissapear();
                 _movement.enabled = false;
                 _rb.AddForce(bulletForce * 100);
 

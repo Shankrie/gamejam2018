@@ -5,23 +5,36 @@ namespace TAHL.Transmission
     public class Shooting : MonoBehaviour
     {
         public GameObject bullet;
-        private Transform firePoint;
-        private Movement movement;
+
+        private Transform _firePoint;
+        private Movement _movement;
+        private SpriteRenderer _spriteRenderer;
 
         private float angle = 0;
         private float bulletAngle = 0;
         private float lastShotTime = 0;
+        private float _deathTime = 0;
+
+        private bool _dissapear = false;
 
         private const float SHOOT_DELAY = 0.25f;
 
         public void Start()
         {
-            movement = transform.parent.GetComponent<Movement>();
-            firePoint = transform.GetChild(0);
+            _movement = transform.parent.GetComponent<Movement>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _firePoint = transform.GetChild(0);
         }
 
         public void Update()
         {
+            if(_dissapear)
+            {
+                if(_deathTime + Globals.Constants.DEATH_DELAY > Time.time)
+                    Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime);
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Shoot();
@@ -30,7 +43,7 @@ namespace TAHL.Transmission
             //CalculateAngle();                
             angle = CalculateAngle();
 
-            if (movement.IsFacingRight)
+            if (_movement.IsFacingRight)
             {
                 bulletAngle = angle - 85;
                 // lock on these degrees
@@ -44,10 +57,10 @@ namespace TAHL.Transmission
                     transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
             }
 
-            if ((angle > 0 && movement.IsFacingRight) ||
-                (angle < 0 && !movement.IsFacingRight))
+            if ((angle > 0 && _movement.IsFacingRight) ||
+                (angle < 0 && !_movement.IsFacingRight))
             {
-                if (movement.IsFacingRight)
+                if (_movement.IsFacingRight)
                 {
                     if(angle >= 135 && angle <= -135)
                     {
@@ -65,8 +78,14 @@ namespace TAHL.Transmission
                 }
 
 
-                movement.FlipPlayer();
+                _movement.FlipPlayer();
             }
+        }
+
+        public void Dissapear()
+        {
+            _deathTime = Time.time;
+            _dissapear = true;
         }
 
         /// <summary>
@@ -75,12 +94,12 @@ namespace TAHL.Transmission
         private void Shoot()
         {
             //Instantiate(bullet, transform.position, transform.rotation);
-            GameObject movingBullet = GameObject.Instantiate(bullet, firePoint.transform.position, Quaternion.identity) as GameObject;
+            GameObject movingBullet = GameObject.Instantiate(bullet, _firePoint.transform.position, Quaternion.identity) as GameObject;
             movingBullet.transform.parent = null;
 
             //shootedBullet.parent = null;
             BulletMovement bulletMovement = movingBullet.GetComponent<BulletMovement>();
-            bulletMovement.Release(firePoint.position, bulletAngle, GetInstanceID(), movement.IsFacingRight);
+            bulletMovement.Release(_firePoint.position, bulletAngle, GetInstanceID(), _movement.IsFacingRight);
         }
 
         /// <summary>
