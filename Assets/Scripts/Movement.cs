@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class Movement : MonoBehaviour {
 
     public Image HealthBar;
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour {
             transform.rotation.y < -0.98;
         } }
 
+    private Animator _anim;
     private Rigidbody2D _rb;
     private int _direction = 0;
     private float healthPoints = 100;
@@ -29,7 +31,8 @@ public class Movement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _rb = GetComponent<Rigidbody2D>();
-	}
+        _anim = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -50,10 +53,17 @@ public class Movement : MonoBehaviour {
         if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             _direction = -1;
+            Debug.Log(_anim.GetBool(0));
+            _anim.SetBool("walk", true);
         }
         else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             _direction = 1;
+            _anim.SetBool("walk", true);
+        }
+        else
+        {
+            _anim.SetBool("walk", false);
         }
     }
 

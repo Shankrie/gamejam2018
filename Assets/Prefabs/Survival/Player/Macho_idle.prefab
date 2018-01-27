@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114740543977876292}
   - component: {fileID: 61202084574578448}
   - component: {fileID: 114244010181081410}
+  - component: {fileID: 95265570101818708}
   m_Layer: 10
   m_Name: Macho_idle
   m_TagString: Player
@@ -149,6 +150,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74630713, y: 2.65}
   m_EdgeRadius: 0
+--- !u!95 &95265570101818708
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140081398155620}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2621cc315046a9e429565f02403e53e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114244010181081410
 MonoBehaviour:
   m_ObjectHideFlags: 1
