@@ -105,6 +105,7 @@ namespace TAHL.Transmission {
                 HealthBar.fillAmount = healthPoints / 100;
 
                 _health.InflictDamage(Vector2.zero, 100);
+                _anim.SetTrigger("death");
             }
         }
 
