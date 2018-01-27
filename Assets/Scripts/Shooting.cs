@@ -6,12 +6,13 @@ namespace TAHL.Transmission
     {
         public GameObject bullet;
 
+        private Movement movement;
+
         private float _angle = 1;
-        private bool _facingRight = false;
 
         public void Start()
         {
-
+            movement = transform.parent.GetComponent<Movement>();
         }
 
         public void Update()
@@ -25,14 +26,22 @@ namespace TAHL.Transmission
             _angle = CalculateAngle();
 
             transform.rotation = Quaternion.Euler(0, 0, -_angle - 270);
+            bool isFacingRight = transform.parent.rotation.y > -1.01 && 
+                transform.parent.rotation.y < -0.98;
+
+
+            Debug.Log(isFacingRight);
+            /*
             if (_angle > 0)
             {
                 Debug.Log("test");
+                reverse than below
             }
-            else if (_angle < 0)
+            else if (_angle < 0 && isFacingRight)
             {
+                is faced right and gun angle is right
                 Debug.Log("Best");
-            }
+            }*/
         }
 
         private void Shoot()

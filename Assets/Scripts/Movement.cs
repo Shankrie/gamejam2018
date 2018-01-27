@@ -45,12 +45,12 @@ public class Movement : MonoBehaviour {
         if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             _direction = -1;
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             _direction = 1;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
@@ -87,5 +87,10 @@ public class Movement : MonoBehaviour {
 
             HealthBar.fillAmount = healthPoints / 100;
         }
+    }
+
+    public void FlipPlayer()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }
