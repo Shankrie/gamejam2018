@@ -51,6 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a328e5d7114bf42b8e76e0d8af9dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 1005801622644828, guid: 8594364303732fc43a97c3a0079ef441,
+  EnemyPrefab: {fileID: 1557895388853736, guid: 662be7b2b5c0b264a9db312d19afbbd8,
     type: 2}
-  direction: 1
