@@ -3,17 +3,22 @@ using UnityEngine;
 
 namespace TAHL.Transmission
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Enemy : MonoBehaviour {
 
         private GameObject _player;
 
         private Rigidbody2D _rb;
+        private SpriteRenderer _spriteRender;
 
-        private float _timeToDissapear = 0;
+        private float _deathTime = 0;
         private float _visibility = 1.0f;
         private int _health = 100;
 
         private bool _isDead = false;
+
+        private const int DEATH_DELAY = 3;
 
         // Use this for initialization
         void Start() {
@@ -21,7 +26,7 @@ namespace TAHL.Transmission
             if (_player == null)
                 throw new Exception("Player object is required to be in scene");
     
-        GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; // will return an array of all GameObjects in the scene
+            GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; // will return an array of all GameObjects in the scene
             foreach (GameObject go in gos)
             {
                 if (go.layer == 10)
@@ -32,15 +37,20 @@ namespace TAHL.Transmission
             }
 
             _rb = GetComponent<Rigidbody2D>();
+            _spriteRender = GetComponent<SpriteRenderer>();
         }
 
         // Update is called once per frame
         void Update() {
             if(_isDead)
             {
-                if(_timeToDissapear > Time.time)
+                if(_deathTime + DEATH_DELAY > Time.time)
                 {
-                    // dissaprea animation
+                    Globals.RemoveCharacher(transform, _spriteRender, _deathTime, DEATH_DELAY);
+                }
+                else
+                {
+                    Destroy(gameObject);
                 }
                 return;
             }
@@ -57,9 +67,10 @@ namespace TAHL.Transmission
         public void InflictDamage(Vector2 force, int damage)
         {
             _health -= damage;
-            if(_health == 0)
+            if(_health <= 0)
             {
-                _timeToDissapear = Time.time + 3.0f;
+                _isDead = true;
+                _deathTime = Time.time;
             }
         }
     }

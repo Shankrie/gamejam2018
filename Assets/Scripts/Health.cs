@@ -13,10 +13,14 @@ namespace TAHL.Transmission
         public Movement movement = null;
 
         private Rigidbody2D _rb = null;
-        private float _timeToDie = 0;
+        private SpriteRenderer _spriteRenderer = null;
+        
+        private float _deathTime = 0;
         private int _health = 100;
 
         private bool _isDead = false;
+
+        private const int DEATH_DELAY = 3;
 
         // Use this for initialization
         void Start()
@@ -24,16 +28,22 @@ namespace TAHL.Transmission
             if(shooting == null)
                 throw new System.Exception("Add Shooting component to health component");
             _rb = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         void Update()
         {
-            if(!_isDead && 1 < Time.time)
+            if (_isDead)
             {
-                // Destroy(gameObject);
-                //_rb.constraints = RigidbodyConstraints2D.None;
-                //_rb.AddForce(new Vector2(100, 300) * 100);
-                _isDead = true;
+                if(_deathTime + DEATH_DELAY > Time.time)
+                {
+                    Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime, DEATH_DELAY);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    _isDead = false;
+                }
             }
         }
 
@@ -42,9 +52,13 @@ namespace TAHL.Transmission
             _health -= damage;
             if (_health <= 0)
             {
+                _isDead = true;
+
                 movement.enabled = false;
                 shooting.enabled = false;
                 _rb.AddForce(bulletForce * 100);
+
+                _deathTime = Time.time;
             }
         }
     }

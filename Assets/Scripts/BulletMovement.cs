@@ -11,11 +11,15 @@ namespace TAHL.Transmission
 
         private Rigidbody2D _rb;
         private Vector2 _direction = Vector2.zero;
+        private Vector2 _releasePoint = Vector2.zero;
+
+        private float _velocityX = 0;
+        private float _velocityY = 0;
 
         private int _instanceId = 0;
 
         private const int SPEED = 20;
-        private const int DAMAGE = 20;
+        private const int DAMAGE = 100;
 
         // Use this for initialization
         void Start() {
@@ -24,24 +28,38 @@ namespace TAHL.Transmission
 
         // Update is called once per frame
         void Update() {
-            _rb.velocity = _direction;
+            float x = transform.position.x;
+            float y = transform.position.y;
+
+            transform.position = new Vector3(x + (_velocityX * Time.deltaTime), y + (_velocityY * Time.deltaTime), 0);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.transform.root.GetInstanceID() == _instanceId)
+            if (collision.gameObject.CompareTag(Globals.Tags.Player))
                 return;
 
             if (collision.gameObject.CompareTag(Globals.Tags.Enemy))
-            {
                 collision.GetComponent<Enemy>().InflictDamage(new Vector2(1, 1), DAMAGE);
-            }
-            else if(collision.gameObject.CompareTag(Globals.Tags.Player))
-            {
-                collision.GetComponent<Health>().InflictDamage(new Vector2(1, 1), DAMAGE);
-            }
-    
+
+            // when hit collider except player then destroy itself
             Destroy(gameObject);
+        }
+
+        public void Release(Vector2 releasePoint, float angle , int instanceId, bool facingRight)
+        {
+            _releasePoint = releasePoint;
+            _instanceId = instanceId;
+
+            int directionY = facingRight ? 1 : -1;
+
+            _velocityX = -SPEED * Mathf.Cos(ToRadians(angle));
+            _velocityY = SPEED * directionY * Mathf.Sin(ToRadians(angle));
+        }
+
+        private float ToRadians(float angle)
+        {
+            return (angle * Mathf.PI) / 180;
         }
     }
 }

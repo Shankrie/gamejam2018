@@ -7,6 +7,7 @@ namespace TAHL.Transmission
         public GameObject bullet;
         private Transform firePoint;
         private float angle = 0;
+        private float bulletAngle = 0;
         private Movement movement;
 
 
@@ -27,9 +28,15 @@ namespace TAHL.Transmission
             angle = CalculateAngle();
 
             if (movement.IsFacingRight)
-                transform.rotation = Quaternion.Euler(180, 0, angle - 85);
+            {
+                bulletAngle = angle - 85;
+                transform.rotation = Quaternion.Euler(180, 0, bulletAngle);
+            }
             else
-                transform.rotation = Quaternion.Euler(0, 0, -angle + 95);
+            {
+                bulletAngle = -angle + 95;
+                transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
+            }
 
             if ((angle > 0 && movement.IsFacingRight) ||
                 (angle < 0 && !movement.IsFacingRight))
@@ -38,6 +45,9 @@ namespace TAHL.Transmission
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Shoot()
         {
             //Instantiate(bullet, transform.position, transform.rotation);
@@ -46,10 +56,7 @@ namespace TAHL.Transmission
 
             //shootedBullet.parent = null;
             BulletMovement bulletMovement = movingBullet.GetComponent<BulletMovement>();
-            bulletMovement.InstanceId = transform.root.GetInstanceID();
-
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
-            bulletMovement.Direction = new Vector2(mousePos.x, mousePos.y);
+            bulletMovement.Release(firePoint.position, bulletAngle, GetInstanceID(), movement.IsFacingRight);
         }
 
         /// <summary>
