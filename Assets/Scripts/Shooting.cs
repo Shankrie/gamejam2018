@@ -6,10 +6,13 @@ namespace TAHL.Transmission
     {
         public GameObject bullet;
         private Transform firePoint;
-        private float angle = 0;
-        private float bulletAngle = 0;
         private Movement movement;
 
+        private float angle = 0;
+        private float bulletAngle = 0;
+        private float lastShotTime = 0;
+
+        private const float SHOOT_DELAY = 0.25f;
 
         public void Start()
         {
@@ -30,17 +33,38 @@ namespace TAHL.Transmission
             if (movement.IsFacingRight)
             {
                 bulletAngle = angle - 85;
-                transform.rotation = Quaternion.Euler(180, 0, bulletAngle);
+                // lock on these degrees
+                if(angle < -50 && angle > -135)
+                    transform.rotation = Quaternion.Euler(180, 0, bulletAngle);
             }
             else
             {
                 bulletAngle = -angle + 95;
-                transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
+                if (angle > 50 && angle < 135)
+                    transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
             }
 
             if ((angle > 0 && movement.IsFacingRight) ||
                 (angle < 0 && !movement.IsFacingRight))
             {
+                if (movement.IsFacingRight)
+                {
+                    if(angle >= 135 && angle <= -135)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 135);
+                    }
+                    else
+                    {
+
+                        transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
+                    }
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(180, 0, 0);
+                }
+
+
                 movement.FlipPlayer();
             }
         }

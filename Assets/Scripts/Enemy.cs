@@ -12,8 +12,9 @@ namespace TAHL.Transmission
         private Rigidbody2D _rb;
         private SpriteRenderer _spriteRender;
 
+        public bool IsDead { get { return _isDead; } }
+
         private float _deathTime = 0;
-        private float _visibility = 1.0f;
         private int _health = 100;
 
         private bool _isDead = false;
@@ -42,6 +43,9 @@ namespace TAHL.Transmission
 
         // Update is called once per frame
         void Update() {
+            if (_player == null)
+                return;
+
             if(_isDead)
             {
                 if(_deathTime + DEATH_DELAY > Time.time)
