@@ -17,7 +17,7 @@ namespace TAHL.Transmission
 
         private bool _dissapear = false;
 
-        private const float SHOOT_DELAY = 0.5f;
+        private const float SHOOT_DELAY = 0.75f;
 
         public void Start()
         {
