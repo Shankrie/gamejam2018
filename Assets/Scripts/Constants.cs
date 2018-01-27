@@ -1,11 +1,14 @@
-﻿public static class Constants
+﻿namespace TAHL.Transmission
 {
-    public enum SceneIndex
+    public static class Constants
     {
-        MainMenu = 0,
-        Game1 = 1,
-        HowToPlay = 2,
-        Credits = 3,
-        Options = 4
+        public enum SceneIndex
+        {
+            MainMenu = 0,
+            Game1 = 1,
+            HowToPlay = 2,
+            Credits = 3,
+            Options = 4
+        }
     }
 }
