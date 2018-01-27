@@ -5,6 +5,13 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 
     public GameObject EnemyPrefab;
+    public Direction direction;
+
+    public enum Direction
+    {
+        toRight = 1,
+        toLeft = -1
+    }
 
     private float initialSpawnInterval = 6.5f;
     private float timeTilNextSpawn;
@@ -37,6 +44,7 @@ public class Spawner : MonoBehaviour {
     /// </summary>
     private void SpawnEnemy()
     {
-        Instantiate(EnemyPrefab, transform.position, transform.rotation);
+        GameObject enemy = Instantiate(EnemyPrefab, transform.position, transform.rotation);
+        //enemy.GetComponent<Enemy>().Direction = (int)direction;
     }
 }
