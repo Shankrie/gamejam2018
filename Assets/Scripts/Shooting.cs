@@ -12,12 +12,12 @@ namespace TAHL.Transmission
 
         private float angle = 0;
         private float bulletAngle = 0;
-        private float lastShotTime = 0;
+        private float _lastShotTime = 0;
         private float _deathTime = 0;
 
         private bool _dissapear = false;
 
-        private const float SHOOT_DELAY = 0.25f;
+        private const float SHOOT_DELAY = 0.5f;
 
         public void Start()
         {
@@ -35,9 +35,12 @@ namespace TAHL.Transmission
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            // Check if last time shot and current time diff is greater when shoot delay
+            if ((Time.time - _lastShotTime) > SHOOT_DELAY &&
+                Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Shoot();
+                _lastShotTime = Time.time;
             }
 
             //CalculateAngle();                
@@ -93,6 +96,8 @@ namespace TAHL.Transmission
         /// </summary>
         private void Shoot()
         {
+            PlayShot();
+            Invoke("PlayLeverRifleCocking", 0.5f); 
             //Instantiate(bullet, transform.position, transform.rotation);
             GameObject movingBullet = GameObject.Instantiate(bullet, _firePoint.transform.position, Quaternion.identity) as GameObject;
             movingBullet.transform.parent = null;
@@ -100,6 +105,20 @@ namespace TAHL.Transmission
             //shootedBullet.parent = null;
             BulletMovement bulletMovement = movingBullet.GetComponent<BulletMovement>();
             bulletMovement.Release(_firePoint.position, bulletAngle, GetInstanceID(), _movement.IsFacingRight);
+        }
+
+        private void PlayShot()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("lever-action-rifle-shot");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+        }
+
+        private void PlayLeverRifleCocking()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("lever-action-rifle-cocking");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
         }
 
         /// <summary>

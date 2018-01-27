@@ -14,6 +14,8 @@ namespace TAHL.Transmission
             public const string Player = "Player";
             public const string Enemy = "Enemy";
             public const string Flour = "Flour";
+            public const string Wall = "Wall";
+            public const string Untagged = "Untagged";
         }
 
         public enum SceneIndex
