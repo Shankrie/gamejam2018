@@ -58,7 +58,6 @@ namespace TAHL.Transmission
             {
                 _isDead = true;
 
-                Shooting.enabled = false;
                 Shooting.Dissapear();
                 _movement.enabled = false;
                 _rb.AddForce(bulletForce * 100);
