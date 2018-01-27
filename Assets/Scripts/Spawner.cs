@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SpawnEnemy();
-
+        timeTilNextSpawn = 0;
         timeTilNextSpawn = initialSpawnInterval;
         lastSpawn = Time.time;
     }
