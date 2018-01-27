@@ -5,8 +5,8 @@ namespace TAHL.Transmission
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class Enemy : MonoBehaviour
-    {
+    [RequireComponent(typeof(Animator))]
+    public class Enemy : MonoBehaviour {
 
         public bool IsDead { get { return _isDead; } }
 
@@ -14,6 +14,7 @@ namespace TAHL.Transmission
 
         private Rigidbody2D _rb;
         private SpriteRenderer _spriteRender;
+        private Animator _anim;
 
         private float _deathTime = 0;
         private float _lastFlipTime = 0;
@@ -41,6 +42,7 @@ namespace TAHL.Transmission
 
             _rb = GetComponent<Rigidbody2D>();
             _spriteRender = GetComponent<SpriteRenderer>();
+            _anim = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -89,6 +91,7 @@ namespace TAHL.Transmission
 
                 _isDead = true;
                 _deathTime = Time.time;
+                _anim.SetTrigger("death");
             }
         }
     }

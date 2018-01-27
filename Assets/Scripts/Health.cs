@@ -8,13 +8,15 @@ namespace TAHL.Transmission
     // Be healthy and kill zombies
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(SpriteRenderer))]
     public class Health : MonoBehaviour
     {
         public Shooting Shooting = null;
         public Image HealthBar;
 
-        private Rigidbody2D _rb ;
+        private Rigidbody2D _rb;
+        private Animator _anim;
         private SpriteRenderer _spriteRenderer;
         private Movement _movement;
         
@@ -31,6 +33,7 @@ namespace TAHL.Transmission
                 throw new System.Exception("Add Shooting component to health component");
                 
             _rb = GetComponent<Rigidbody2D>();
+            _anim = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _movement = GetComponent<Movement>();
         }
@@ -67,6 +70,7 @@ namespace TAHL.Transmission
                 _rb.AddForce(bulletForce * 100);
 
                 _deathTime = Time.time;
+                _anim.SetTrigger("death");
             }
         }
     }
