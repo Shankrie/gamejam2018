@@ -36,7 +36,8 @@ namespace TAHL.Transmission
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag(Globals.Tags.Player))
+            if (collision.gameObject.CompareTag(Globals.Tags.Player) ||
+                collision.gameObject.CompareTag(Globals.Tags.Untagged))
                 return;
 
             if (collision.gameObject.CompareTag(Globals.Tags.Enemy))

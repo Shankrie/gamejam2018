@@ -12,12 +12,12 @@ namespace TAHL.Transmission
 
         private float angle = 0;
         private float bulletAngle = 0;
-        private float lastShotTime = 0;
+        private float _lastShotTime = 0;
         private float _deathTime = 0;
 
         private bool _dissapear = false;
 
-        private const float SHOOT_DELAY = 0.25f;
+        private const float SHOOT_DELAY = 0.5f;
 
         public void Start()
         {
@@ -35,9 +35,12 @@ namespace TAHL.Transmission
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            // Check if last time shot and current time diff is greater when shoot delay
+            if ((Time.time - _lastShotTime) > SHOOT_DELAY &&
+                Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Shoot();
+                _lastShotTime = Time.time;
             }
 
             //CalculateAngle();                

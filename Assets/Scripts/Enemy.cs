@@ -73,6 +73,7 @@ namespace TAHL.Transmission
             _health -= damage;
             if(_health <= 0)
             {
+                gameObject.tag = Globals.Tags.Untagged;
                 _isDead = true;
                 _deathTime = Time.time;
             }
