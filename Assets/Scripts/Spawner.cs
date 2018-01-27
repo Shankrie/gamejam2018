@@ -3,13 +3,6 @@
 public class Spawner : MonoBehaviour {
 
     public GameObject EnemyPrefab;
-    public Direction direction;
-
-    public enum Direction
-    {
-        toRight = 1,
-        toLeft = -1
-    }
 
     private float initialSpawnInterval = 6.5f;
     private float timeTilNextSpawn;

@@ -21,7 +21,7 @@ namespace TAHL.Transmission
             if (_player == null)
                 throw new Exception("Player object is required to be in scene");
     
-        GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; // will return an array of all GameObjects in the scene
+            GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; // will return an array of all GameObjects in the scene
             foreach (GameObject go in gos)
             {
                 if (go.layer == 10)
