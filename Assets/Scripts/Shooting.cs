@@ -8,7 +8,6 @@ namespace TAHL.Transmission
 
         private Movement movement;
 
-        private float _angle = 1;
 
         public void Start()
         {
@@ -23,25 +22,19 @@ namespace TAHL.Transmission
             }
 
             //CalculateAngle();                
-            _angle = CalculateAngle();
+            float angle = CalculateAngle();
 
-            transform.rotation = Quaternion.Euler(0, 0, -_angle - 270);
             bool isFacingRight = transform.parent.rotation.y > -1.01 && 
                 transform.parent.rotation.y < -0.98;
+            if(isFacingRight)
+                transform.rotation = Quaternion.Euler(180, 0, angle - 85);
+            else
+                transform.rotation = Quaternion.Euler(0, 0, -angle + 95);
 
-
-            Debug.Log(isFacingRight);
-            /*
-            if (_angle > 0)
-            {
-                Debug.Log("test");
-                reverse than below
-            }
-            else if (_angle < 0 && isFacingRight)
-            {
-                is faced right and gun angle is right
-                Debug.Log("Best");
-            }*/
+            if (angle > 0 && isFacingRight)
+                movement.FlipPlayer(isFacingRight: true);
+            else if (angle < 0 && !isFacingRight)
+                movement.FlipPlayer(isFacingRight: false);
         }
 
         private void Shoot()

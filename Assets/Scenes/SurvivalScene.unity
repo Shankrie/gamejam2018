@@ -259,18 +259,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.54500735, y: 0}
+  m_Offset: {x: -0.05912137, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
+    oldSize: {x: 0.8333333, y: 2.75}
     newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8889587, y: 3}
+  m_Size: {x: 0.74630713, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &663755886 stripped
 MonoBehaviour:
@@ -865,7 +865,40 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4591642710491102, guid: 7b0a9fdc268e62941a9ee29191cf7ea0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.97
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591642710491102, guid: 7b0a9fdc268e62941a9ee29191cf7ea0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212684927455914020, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50622725874305310, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625306990578990, guid: 7b0a9fdc268e62941a9ee29191cf7ea0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50622725874305310, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
+        type: 2}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50622725874305310, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
+        type: 2}
+      propertyPath: m_Mass
+      value: 2.2389214
+      objectReference: {fileID: 0}
+    - target: {fileID: 50622725874305310, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b0a9fdc268e62941a9ee29191cf7ea0, type: 2}
