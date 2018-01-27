@@ -5,19 +5,36 @@ namespace TAHL.Transmission
     public class Shooting : MonoBehaviour
     {
         public GameObject bullet;
-        private Transform firePoint;
-        private float angle = 0;
-        private Movement movement;
 
+        private Transform _firePoint;
+        private Movement _movement;
+        private SpriteRenderer _spriteRenderer;
+
+        private float angle = 0;
+        private float bulletAngle = 0;
+        private float lastShotTime = 0;
+        private float _deathTime = 0;
+
+        private bool _dissapear = false;
+
+        private const float SHOOT_DELAY = 0.25f;
 
         public void Start()
         {
-            movement = transform.parent.GetComponent<Movement>();
-            firePoint = transform.GetChild(0);
+            _movement = transform.parent.GetComponent<Movement>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _firePoint = transform.GetChild(0);
         }
 
         public void Update()
         {
+            if(_dissapear)
+            {
+                if(_deathTime + Globals.Constants.DEATH_DELAY > Time.time)
+                    Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime);
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Shoot();
@@ -26,32 +43,65 @@ namespace TAHL.Transmission
             //CalculateAngle();                
             angle = CalculateAngle();
 
-            if (movement.IsFacingRight)
-                transform.rotation = Quaternion.Euler(180, 0, angle - 85);
-            else
-                transform.rotation = Quaternion.Euler(0, 0, -angle + 95);
-
-            if ((angle > 0 && movement.IsFacingRight) ||
-                (angle < 0 && !movement.IsFacingRight))
+            if (_movement.IsFacingRight)
             {
-                movement.FlipPlayer();
+                bulletAngle = angle - 85;
+                // lock on these degrees
+                if(angle < -50 && angle > -135)
+                    transform.rotation = Quaternion.Euler(180, 0, bulletAngle);
+            }
+            else
+            {
+                bulletAngle = -angle + 95;
+                if (angle > 50 && angle < 135)
+                    transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
+            }
+
+            if ((angle > 0 && _movement.IsFacingRight) ||
+                (angle < 0 && !_movement.IsFacingRight))
+            {
+                if (_movement.IsFacingRight)
+                {
+                    if(angle >= 135 && angle <= -135)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 135);
+                    }
+                    else
+                    {
+
+                        transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
+                    }
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(180, 0, 0);
+                }
+
+
+                _movement.FlipPlayer();
             }
         }
 
+        public void Dissapear()
+        {
+            _deathTime = Time.time;
+            _dissapear = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void Shoot()
         {
             PlayShot();
             Invoke("PlayLeverRifleCocking", 0.5f); 
             //Instantiate(bullet, transform.position, transform.rotation);
-            GameObject movingBullet = GameObject.Instantiate(bullet, firePoint.transform.position, Quaternion.identity) as GameObject;
+            GameObject movingBullet = GameObject.Instantiate(bullet, _firePoint.transform.position, Quaternion.identity) as GameObject;
             movingBullet.transform.parent = null;
 
             //shootedBullet.parent = null;
             BulletMovement bulletMovement = movingBullet.GetComponent<BulletMovement>();
-            bulletMovement.InstanceId = transform.root.GetInstanceID();
-
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
-            bulletMovement.Direction = new Vector2(mousePos.x, mousePos.y);
+            bulletMovement.Release(_firePoint.position, bulletAngle, GetInstanceID(), _movement.IsFacingRight);
         }
 
         private void PlayShot()
