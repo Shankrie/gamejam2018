@@ -1,13 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour {
 
+    public Image HealthBar;
+
     private Rigidbody2D _rb;
     private int _direction = 0;
+    private float healthPoints = 100;
+    private float damageCooldown = 2;
 
-   
+    private List<EnemyCollision> enemyCollisions = new List<EnemyCollision>();
+
+    private class EnemyCollision
+    {
+        public GameObject obj;
+        public float lastHit;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +29,14 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         _rb.velocity = new Vector2(_direction * 8, 0);
+
+        foreach(EnemyCollision coll in enemyCollisions)
+        {
+            if (coll.lastHit + damageCooldown < Time.time)
+            {
+                inflictDamage(coll);
+            }
+        }
 	}
 
     private void FixedUpdate()
@@ -31,6 +51,41 @@ public class Movement : MonoBehaviour {
         {
             _direction = 1;
             transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.layer == 8)
+        {
+            EnemyCollision coll = new EnemyCollision();
+            coll.obj = other.gameObject;
+            enemyCollisions.Add(coll);
+
+            inflictDamage(coll);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            EnemyCollision coll = enemyCollisions.FirstOrDefault(colission => colission.obj.GetInstanceID() == other.gameObject.GetInstanceID());
+            if (coll != null)
+            {
+                enemyCollisions.Remove(coll);
+            }
+        }
+    }
+
+    private void inflictDamage(EnemyCollision coll) {
+
+        if (healthPoints > 0)
+        {
+            healthPoints -= 10;
+            coll.lastHit = Time.time;
+
+            HealthBar.fillAmount = healthPoints / 100;
         }
     }
 }
