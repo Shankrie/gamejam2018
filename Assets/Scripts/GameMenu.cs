@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TAHL.Transmission
@@ -28,7 +26,7 @@ namespace TAHL.Transmission
 
         public void ReturnToMenu()
         {
-            SceneManager.LoadScene((int)Constants.SceneIndex.MainMenu);
+            SceneManager.LoadScene((int)Globals.SceneIndex.MainMenu);
         }
 
         public void ResumeGame()

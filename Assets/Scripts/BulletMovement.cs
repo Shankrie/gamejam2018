@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace TAHL.Transmission {
+namespace TAHL.Transmission
+{
 
     [RequireComponent(typeof(Rigidbody2D))]
     public class BulletMovement : MonoBehaviour {
@@ -33,10 +32,10 @@ namespace TAHL.Transmission {
             if (collision.transform.root.GetInstanceID() == _instanceId)
                 return;
 
-            if (collision.gameObject.CompareTag(Globals.Tags.Zombie) || 
+            if (collision.gameObject.CompareTag(Globals.Tags.Enemy) || 
                 collision.gameObject.CompareTag(Globals.Tags.Player))
             {
-                collision.GetComponent<Health>().InflictDamage(DAMAGE);
+                collision.GetComponent<Health>().InflictDamage(DAMAGE, new Vector2(1, 1));
             }
     
             Destroy(gameObject);
