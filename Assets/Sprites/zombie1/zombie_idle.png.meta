@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: afda94235cc79b745b8e01b1808f0fe8
+timeCreated: 1517063278
+=======
 guid: d15671580a310fc4f8d77a6c07dc2270
 timeCreated: 1517058952
+>>>>>>> 77a21a36e42551db62ae78dbd3d9267d58ff4e46
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -8,12 +13,21 @@ TextureImporter:
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
+<<<<<<< HEAD
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+=======
     enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 1
     borderMipMap: 1
     mipMapsPreserveCoverage: 1
+>>>>>>> 77a21a36e42551db62ae78dbd3d9267d58ff4e46
     alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
@@ -31,7 +45,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
+    filterMode: -1
+=======
     filterMode: 0
+>>>>>>> 77a21a36e42551db62ae78dbd3d9267d58ff4e46
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -46,7 +64,11 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
+  spritePixelsToUnits: 100
+=======
   spritePixelsToUnits: 18
+>>>>>>> 77a21a36e42551db62ae78dbd3d9267d58ff4e46
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -57,6 +79,14 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
+<<<<<<< HEAD
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+=======
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
@@ -73,6 +103,7 @@ TextureImporter:
     textureCompression: 2
     compressionQuality: 100
     crunchedCompression: 1
+>>>>>>> 77a21a36e42551db62ae78dbd3d9267d58ff4e46
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
