@@ -1,47 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+namespace TAHL.Transmission
+{
+    public class Enemy : MonoBehaviour {
 
-    //public float Direction
-    //{
-    //    get
-    //    {
-    //        return direction;
-    //    }
-    //    set { direction = value;  }
-    //}
+        private GameObject _player;
 
-    public GameObject player;
+        private Rigidbody2D _rb;
+        private int direction;
 
-    private Rigidbody2D _rb;
-    private int direction;
-
-    // Use this for initialization
-    void Start () {
-
-        GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; // will return an array of all GameObjects in the scene
-        foreach (GameObject go in gos)
-        {
-            if (go.layer == 10)
-            {
-                player = go;
-                break;
-            }
-        }
-
-        _rb = GetComponent<Rigidbody2D>();
-    }
+        // Use this for initialization
+        void Start() {
+            _player = GameObject.FindGameObjectWithTag(Globals.Tags.Player);
+            if (_player == null)
+                throw new Exception("Player object is required to be in scene");
     
-    // Update is called once per frame
-    void Update () {
-        int direction = 1; 
-        if (player.transform.position.x < transform.position.x)
-        {
-            direction = -1;
+        GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; // will return an array of all GameObjects in the scene
+            foreach (GameObject go in gos)
+            {
+                if (go.layer == 10)
+                {
+                    _player = go;
+                    break;
+                }
+            }
+
+            _rb = GetComponent<Rigidbody2D>();
         }
 
-        _rb.velocity = new Vector2(direction * 0.65f, _rb.velocity.y);
+        // Update is called once per frame
+        void Update() {
+            int direction = 1;
+            if (_player.transform.position.x < transform.position.x)
+            {
+                direction = -1;
+            }
+
+            _rb.velocity = new Vector2(direction * 0.65f, _rb.velocity.y);
+        }
     }
 }
