@@ -282,18 +282,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 662be7b2b5c0b264a9db312d19afbbd8, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &226659764 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114930013792977834, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1455366278}
-  m_Script: {fileID: 11500000, guid: dcdcf22d302eb1541a7e0f8cdc701f99, type: 3}
---- !u!114 &403058769 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114287801348315900, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1455366278}
-  m_Script: {fileID: 11500000, guid: 4b66f8cea1c2c9f47b68c95ae8e540d3, type: 3}
 --- !u!114 &727766032 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114616494745015328, guid: f0ca9e695d64964478815e7876795fe8,
@@ -669,7 +657,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1455366278
+--- !u!1001 &1625059706
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -708,17 +696,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114740543977876292, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
-        type: 2}
-      propertyPath: movement
-      value: 
-      objectReference: {fileID: 226659764}
-    - target: {fileID: 114740543977876292, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
-        type: 2}
-      propertyPath: Shooting
-      value: 
-      objectReference: {fileID: 403058769}
-    - target: {fileID: 114930013792977834, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
+    - target: {fileID: 114635973613577474, guid: 7b0a9fdc268e62941a9ee29191cf7ea0,
         type: 2}
       propertyPath: HealthBar
       value: 
