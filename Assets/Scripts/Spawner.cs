@@ -7,16 +7,16 @@ namespace TAHL.Transmission {
 
         private GameObject _player = null;
 
-        private float spawnTime;
-        private float lastSpawn;
+        private float _spawnTime;
+        private float _lastSpawn;
 
-        private float decreaseSpawnTime = 0;
+        private float _decreaseSpawnTime = 0;
 
         // Use this for initialization
         void Start() {
             SpawnEnemy();
-            spawnTime = NextSpawnTime();
-            lastSpawn = Time.time;
+            _spawnTime = NextSpawnTime();
+            _lastSpawn = Time.time;
 
             _player = GameObject.FindGameObjectWithTag(Globals.Tags.Player);
         }
@@ -26,13 +26,13 @@ namespace TAHL.Transmission {
             if (_player == null)
                 return;
 
-            if (spawnTime < Time.time && !Globals.GlobarVars.GameOverFlag)
+            if (_spawnTime < Time.time && !Globals.GlobarVars.GameOverFlag)
             {
                 SpawnEnemy();
-                lastSpawn = Time.time;
+                _lastSpawn = Time.time;
 
-                decreaseSpawnTime -= Globals.Constants.DECREASE_SPAWN_TIME_BY;
-                spawnTime = NextSpawnTime() - decreaseSpawnTime;
+                _decreaseSpawnTime -= Globals.Constants.DECREASE_SPAWN_TIME_BY;
+                _spawnTime = NextSpawnTime() - _decreaseSpawnTime;
             }
         }
 

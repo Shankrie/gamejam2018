@@ -21,14 +21,14 @@ namespace TAHL.Transmission
             SceneManager.LoadScene((int)Globals.SceneIndex.HowToPlay);
         }
 
-        public void LoadOptions()
-        {
-            SceneManager.LoadScene((int)Globals.SceneIndex.Options);
-        }
-
         public void LoadCredits()
         {
             SceneManager.LoadScene((int)Globals.SceneIndex.Credits);
+        }
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene((int)Globals.SceneIndex.MainMenu);
         }
 
         public void Exit()

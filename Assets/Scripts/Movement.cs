@@ -63,7 +63,10 @@ namespace TAHL.Transmission {
                 _anim.SetBool("walk", false);
             }
 
-            if(_jumpTime < Time.time && Input.GetKey(KeyCode.Space))
+            if(_jumpTime < Time.time && 
+                (Input.GetKeyDown(KeyCode.Space) ||
+                Input.GetKeyDown(KeyCode.W) || 
+                Input.GetKeyDown(KeyCode.UpArrow)))
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, 20);
                 _jumpTime = Time.time + Globals.Delays.JUMP;

@@ -47,6 +47,7 @@ namespace TAHL.Transmission
             public const string Enemy = "Enemy";
             public const string Flour = "Flour";
             public const string Wall = "Wall";
+            public const string GameEndDialog = "GameEndDialog";
             public const string Untagged = "Untagged";
         }
 
@@ -56,8 +57,7 @@ namespace TAHL.Transmission
             Game1 = 1,
             HowToPlay = 2,
             Credits = 3,
-            Options = 4,
-            SurvivalScene = 5
+            SurvivalScene = 4
         }
 
         public static void RemoveCharacher(Transform transform, SpriteRenderer renderer, float deathTime)
