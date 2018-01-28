@@ -7,12 +7,18 @@ namespace TAHL.Transmission
     public class GameMenu : MonoBehaviour
     {
         public GameObject GameWinDialog;
-        public GameObject GameMenuDialog;
+        private GameObject _gameMenuDialog;
         public Text TimeLabel;
         
         private int gameTime = 60;
         private float startTime;
 
+        private void Awake()
+        {
+            _gameMenuDialog = GameObject.FindGameObjectWithTag(Globals.Tags.MenuDialog);
+            _gameMenuDialog.SetActive(false);
+        }
+        
         private void Start()
         {
             TimeLabel.text = "00:" + gameTime.ToString();
@@ -44,13 +50,13 @@ namespace TAHL.Transmission
 
             if (Input.GetKeyDown(KeyCode.Escape))
             { 
-                if (GameMenuDialog.activeSelf)
+                if (_gameMenuDialog.activeSelf)
                 {
                     ResumeGame();
                 }
                 else if (Time.timeScale != 0)
                 {
-                    GameMenuDialog.SetActive(true);
+                    _gameMenuDialog.SetActive(true);
                     Time.timeScale = 0;
                 }
             }
@@ -63,7 +69,7 @@ namespace TAHL.Transmission
 
         public void ResumeGame()
         {
-            GameMenuDialog.SetActive(false);
+            _gameMenuDialog.SetActive(false);
             Time.timeScale = 1;
         }
 

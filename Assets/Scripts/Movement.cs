@@ -26,7 +26,10 @@ namespace TAHL.Transmission {
 
 
         // Use this for initialization
-        void Start() {
+        void Start()
+        {
+            Time.timeScale = 1;
+            Globals.GlobarVars.GameOverFlag = false;
             _rb = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
             _health = GetComponent<Health>();

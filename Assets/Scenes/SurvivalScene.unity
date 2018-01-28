@@ -673,6 +673,14 @@ Prefab:
       propertyPath: m_Text
       value: YOU WIN
       objectReference: {fileID: 0}
+    - target: {fileID: 1780556526823492, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
+      propertyPath: m_TagString
+      value: MenuDialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780556526823492, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
   m_IsPrefabParent: 0
