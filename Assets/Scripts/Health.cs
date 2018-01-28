@@ -49,7 +49,6 @@ namespace TAHL.Transmission
                 }
                 else
                 {
-                    Destroy(transform.GetChild(0).gameObject);
                     Destroy(gameObject);
                     _isDead = false;
                 }
