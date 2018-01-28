@@ -26,7 +26,7 @@ namespace TAHL.Transmission {
             if (_player == null)
                 return;
 
-            if (spawnTime < Time.time)
+            if (spawnTime < Time.time && !Globals.GlobarVars.GameOverFlag)
             {
                 SpawnEnemy();
                 lastSpawn = Time.time;

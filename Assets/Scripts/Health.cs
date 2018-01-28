@@ -20,7 +20,7 @@ namespace TAHL.Transmission
         private Animator _anim;
         private SpriteRenderer _spriteRenderer;
         private Movement _movement;
-        
+        private Enemy Enemy;
         private float _deathTime = 0;
         private int _health = 100;
 
@@ -55,6 +55,14 @@ namespace TAHL.Transmission
             }
         }
 
+        private void PlayGameOverSound()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("game-over");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+
+        }
+
         public void InflictDamage(Globals.EnemyCollision coll, Vector2 bulletForce, int damage)
         {
             _health -= damage;
@@ -65,6 +73,7 @@ namespace TAHL.Transmission
             {
                 _isDead = true;
 
+                
                 Shooting.enabled = false;
                 _movement.enabled = false;
                 _rb.AddForce(bulletForce * 100);
@@ -74,6 +83,8 @@ namespace TAHL.Transmission
 
                 if (GameEndDialog != null)
                 {
+                    Globals.GlobarVars.GameOverFlag = true;
+                    PlayGameOverSound();
                     GameEndDialog.SetActive(true);
                 }
 
