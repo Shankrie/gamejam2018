@@ -34,6 +34,11 @@ namespace TAHL.Transmission
             GameMenuDialog.SetActive(false);
             Time.timeScale = 1;
         }
+
+        public void RestartLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
 }

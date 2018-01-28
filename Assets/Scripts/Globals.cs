@@ -50,7 +50,8 @@ namespace TAHL.Transmission
             Game1 = 1,
             HowToPlay = 2,
             Credits = 3,
-            Options = 4
+            Options = 4,
+            SurvivalScene = 5
         }
 
         public static void RemoveCharacher(Transform transform, SpriteRenderer renderer, float deathTime)

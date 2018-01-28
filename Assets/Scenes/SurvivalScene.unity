@@ -236,12 +236,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15e4e68e4cc008845a358af8f3b1ade7, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &727766032 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114616494745015328, guid: f0ca9e695d64964478815e7876795fe8,
+--- !u!1 &725098010 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1374170316155854, guid: f0ca9e695d64964478815e7876795fe8,
     type: 2}
   m_PrefabInternal: {fileID: 1326419968}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &882010021
 Prefab:
   m_ObjectHideFlags: 0
@@ -603,6 +602,16 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2139986198}
+    - target: {fileID: 114208410600217502, guid: f0ca9e695d64964478815e7876795fe8,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2139986198}
+    - target: {fileID: 114250710883401012, guid: f0ca9e695d64964478815e7876795fe8,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2139986198}
     - target: {fileID: 114812038613722950, guid: f0ca9e695d64964478815e7876795fe8,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -613,10 +622,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 14001045}
-    - target: {fileID: 1374170316155854, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
   m_IsPrefabParent: 0
@@ -769,15 +774,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114935905507221792, guid: 8a22cab230c132b49a50df4bcef5de86,
+        type: 2}
+      propertyPath: GameEndDialog
+      value: 
+      objectReference: {fileID: 725098010}
     - target: {fileID: 1302693474391974, guid: 8a22cab230c132b49a50df4bcef5de86, type: 2}
       propertyPath: m_Name
       value: Macho
       objectReference: {fileID: 0}
-    - target: {fileID: 114659542600082800, guid: 8a22cab230c132b49a50df4bcef5de86,
-        type: 2}
-      propertyPath: HealthBar
-      value: 
-      objectReference: {fileID: 727766032}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a22cab230c132b49a50df4bcef5de86, type: 2}
   m_IsPrefabParent: 0
