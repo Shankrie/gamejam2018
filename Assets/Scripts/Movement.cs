@@ -21,6 +21,7 @@ namespace TAHL.Transmission {
         private Health _health;
 
         private float damageCooldown = 2;
+        private float _jumpTime = 0;
         private int _direction = 0;
 
 
@@ -33,7 +34,7 @@ namespace TAHL.Transmission {
 
         // Update is called once per frame
         void Update() {
-            _rb.velocity = new Vector2(_direction * 8, 0);
+            _rb.velocity = new Vector2(_direction * 8, _rb.velocity.y);
 
             foreach (Globals.EnemyCollision coll in enemyCollisions)
             {
@@ -60,6 +61,12 @@ namespace TAHL.Transmission {
             else
             {
                 _anim.SetBool("walk", false);
+            }
+
+            if(_jumpTime < Time.time && Input.GetKey(KeyCode.Space))
+            {
+                _rb.velocity = new Vector2(_rb.velocity.x, 20);
+                _jumpTime = Time.time + Globals.Delays.JUMP;
             }
         }
 

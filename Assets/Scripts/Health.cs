@@ -61,7 +61,7 @@ namespace TAHL.Transmission
             //HealthBar.fillAmount = _health / 100;
             coll.lastHit = Time.time;
 
-            if (_health <= 0)
+            if (_health <= 0 && !_isDead)
             {
                 _isDead = true;
 

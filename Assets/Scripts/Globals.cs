@@ -14,8 +14,9 @@ namespace TAHL.Transmission
         public static partial class Delays
         {
             public const float DEATH = 3.0f;
-            public const float SHOT = 0.75f;
+            public const float SHOT = 0.8f;
             public const float FLIP = 0.25f;
+            public const float JUMP = 0.5f;
         }
 
         public static partial class Constants
