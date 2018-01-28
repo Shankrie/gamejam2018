@@ -6,19 +6,25 @@ namespace TAHL.Transmission
     public class GameMenu : MonoBehaviour
     {
 
-        public GameObject GameMenuDialog;
+        private GameObject _gameMenuDialog;
+
+        private void Awake()
+        {
+            _gameMenuDialog = GameObject.FindGameObjectWithTag(Globals.Tags.MenuDialog);
+            _gameMenuDialog.SetActive(false);
+        }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             { 
-                if (GameMenuDialog.activeSelf)
+                if (_gameMenuDialog.activeSelf)
                 {
                     ResumeGame();
                 }
                 else
                 {
-                    GameMenuDialog.SetActive(true);
+                    _gameMenuDialog.SetActive(true);
                     Time.timeScale = 0;
                 }
             }
@@ -31,7 +37,7 @@ namespace TAHL.Transmission
 
         public void ResumeGame()
         {
-            GameMenuDialog.SetActive(false);
+            _gameMenuDialog.SetActive(false);
             Time.timeScale = 1;
         }
 

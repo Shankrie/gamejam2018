@@ -10,15 +10,19 @@ namespace TAHL.Transmission
         private Movement _movement;
         private SpriteRenderer _spriteRenderer;
 
-        private float angle = 0;
-        private float bulletAngle = 0;
-        private float _lastShotTime = 0;
+        private float _angle;
+        private float _bulletAngle;
+        private float _lastShotTime;
 
         public void Start()
         {
             _movement = transform.parent.GetComponent<Movement>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _firePoint = transform.GetChild(0);
+
+            _angle = 0;
+            _bulletAngle = 0;
+            _lastShotTime = 0;
         }
 
         public void Update()
@@ -32,24 +36,24 @@ namespace TAHL.Transmission
             }
 
             //CalculateAngle();                
-            angle = CalculateAngle();
+            _angle = CalculateAngle();
 
             if (_movement.IsFacingRight)
             {
-                bulletAngle = angle - 85;
+                _bulletAngle = _angle - 85;
                 // lock on these degrees
-                if(angle < -50 && angle > -135)
-                    transform.rotation = Quaternion.Euler(180, 0, bulletAngle);
+                if(_angle < -50 && _angle > -135)
+                    transform.rotation = Quaternion.Euler(180, 0, _bulletAngle);
             }
             else
             {
-                bulletAngle = -angle + 95;
-                if (angle > 50 && angle < 135)
-                    transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
+                _bulletAngle = -_angle + 95;
+                if (_angle > 50 && _angle < 135)
+                    transform.rotation = Quaternion.Euler(0, 0, _bulletAngle);
             }
 
-            if ((angle > 0 && _movement.IsFacingRight) ||
-                (angle < 0 && !_movement.IsFacingRight))
+            if ((_angle > 0 && _movement.IsFacingRight) ||
+                (_angle < 0 && !_movement.IsFacingRight))
             {
                 _movement.FlipPlayer();
             }
@@ -72,7 +76,7 @@ namespace TAHL.Transmission
 
             //shootedBullet.parent = null;
             BulletMovement bulletMovement = movingBullet.GetComponent<BulletMovement>();
-            bulletMovement.Release(_firePoint.position, bulletAngle, GetInstanceID(), _movement.IsFacingRight);
+            bulletMovement.Release(_firePoint.position, _bulletAngle, GetInstanceID(), _movement.IsFacingRight);
         }
 
         private void PlayShot()
@@ -90,7 +94,7 @@ namespace TAHL.Transmission
         }
 
         /// <summary>
-        /// Calculates angle between mouse position and pivot point around which bow rotates
+        /// Calculates _angle between mouse position and pivot point around which bow rotates
         /// </summary>
         /// <returns>Angle in degrees</returns>
         private float CalculateAngle()
@@ -101,5 +105,6 @@ namespace TAHL.Transmission
             float yDiff = transform.position.y - mousePos.y;
             return Mathf.Atan2(xDiff, yDiff) * Mathf.Rad2Deg;
         }
+
     }
 }
