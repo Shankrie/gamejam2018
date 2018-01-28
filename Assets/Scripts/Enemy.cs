@@ -92,6 +92,7 @@ namespace TAHL.Transmission
                 _isDead = true;
                 _deathTime = Time.time;
                 _anim.SetTrigger("death");
+                transform.position -= new Vector3(3.5f * lastDirection, 0, 0);
             }
         }
     }

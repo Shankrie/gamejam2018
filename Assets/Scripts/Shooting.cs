@@ -95,10 +95,14 @@ namespace TAHL.Transmission
         /// </summary>
         private void Shoot()
         {
+            // Play sound
             PlayShot();
-            Invoke("PlayLeverRifleCocking", 0.5f); 
-            //Instantiate(bullet, transform.position, transform.rotation);
-            GameObject movingBullet = GameObject.Instantiate(bullet, _firePoint.transform.position, Quaternion.identity) as GameObject;
+            Invoke("PlayLeverRifleCocking", 0.5f);
+
+            // Instantiate bullet
+            GameObject movingBullet = GameObject.Instantiate(bullet, _firePoint.transform.position, 
+                _movement.IsFacingRight ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0)
+            ) as GameObject;
             movingBullet.transform.parent = null;
 
             //shootedBullet.parent = null;

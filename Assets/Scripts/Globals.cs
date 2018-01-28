@@ -56,7 +56,7 @@ namespace TAHL.Transmission
                 renderer.color.b,
                 alpha * 0.01f
             );
-            // transform.position -= new Vector3(Time.deltaTime * 0.5f, 0, 0);
+            transform.position -= new Vector3(Time.deltaTime * 0.5f, 0, 0);
         }
     }
 }

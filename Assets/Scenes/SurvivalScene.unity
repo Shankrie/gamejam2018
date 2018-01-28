@@ -312,10 +312,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 156649759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1eb54186868b444ebfa1ed666ce2ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: dcdcf22d302eb1541a7e0f8cdc701f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 727766032}
 --- !u!114 &156649761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shooting: {fileID: 1329247379}
+  HealthBar: {fileID: 727766032}
 --- !u!95 &156649762
 Animator:
   serializedVersion: 3
