@@ -18,6 +18,9 @@ namespace TAHL.Transmission
 
         private float _deathTime = 0;
         private float _lastFlipTime = 0;
+        private float _initialTime = 0;
+        private float _speedIncreaseTime = 0;
+        private float _speed;
 
         private int _health = 100;
         private int lastDirection = 1;
@@ -43,6 +46,11 @@ namespace TAHL.Transmission
             _rb = GetComponent<Rigidbody2D>();
             _spriteRender = GetComponent<SpriteRenderer>();
             _anim = GetComponent<Animator>();
+
+            _initialTime = Time.time;
+            _speed = UnityEngine.Random.Range(Globals.Constants.ZOMBIE_SPEED, Globals.Constants.ZOMBIE_SPEED + 1.0f);
+            _speedIncreaseTime = UnityEngine.Random.Range(Globals.Constants.ZOMBIE_SPEED_INC_TIME_MIN, 
+                Globals.Constants.ZOMBIE_SPEED_INC_TIME_MAX) + Time.time;
         }
 
         // Update is called once per frame
@@ -76,7 +84,14 @@ namespace TAHL.Transmission
                 _lastFlipTime = Time.time;
             }
 
-            _rb.velocity = new Vector2(direction * 0.65f, _rb.velocity.y);
+            _rb.velocity = new Vector2(direction * _speed, _rb.velocity.y);
+            if(_speed < Globals.Constants.ZOMBIE_SPEED_MAX && _speedIncreaseTime < Time.time)
+            {
+                _speed += Globals.Constants.INC_ZOMBIE_SPEED_BY;
+                _speedIncreaseTime = UnityEngine.Random.Range(Globals.Constants.ZOMBIE_SPEED_INC_TIME_MIN, 
+                    Globals.Constants.ZOMBIE_SPEED_INC_TIME_MAX) + Time.time;
+
+            }
         }
 
         public void InflictDamage(Vector2 force, int damage)
@@ -92,7 +107,6 @@ namespace TAHL.Transmission
                 _isDead = true;
                 _deathTime = Time.time;
                 _anim.SetTrigger("death");
-                transform.position -= new Vector3(3.5f * lastDirection, 0, 0);
             }
         }
 

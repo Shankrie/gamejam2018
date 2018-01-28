@@ -20,8 +20,17 @@ namespace TAHL.Transmission
 
         public static partial class Constants
         {
+            public const float MIN_SPAWN_TIME = 0f;
+            public const float MAX_SPAWN_TIME = 6f;
+            public const float DECREASE_SPAWN_TIME_BY = 0.2f;
+            public const float ZOMBIE_SPEED = 1.0f;
+            public const float ZOMBIE_SPEED_INC_TIME_MIN = 1f;
+            public const float ZOMBIE_SPEED_INC_TIME_MAX = 3f;
+            public const float INC_ZOMBIE_SPEED_BY = 0.2f;
+
             public const int BULLET_SPEED = 20;
             public const int PLAYER_SPEED = 10;
+            public const int ZOMBIE_SPEED_MAX = 12;
             public const int ZOMBIE_DAMAGE = 100;
             public const int PLAYER_DAMAGE = 100;
         }

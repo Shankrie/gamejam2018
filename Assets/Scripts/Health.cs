@@ -65,12 +65,14 @@ namespace TAHL.Transmission
             {
                 _isDead = true;
 
-                Shooting.Dissapear();
+                Shooting.enabled = false;
                 _movement.enabled = false;
                 _rb.AddForce(bulletForce * 100);
 
                 _deathTime = Time.time;
                 _anim.SetTrigger("death");
+
+                Destroy(Shooting.gameObject);
             }
         }
     }

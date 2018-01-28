@@ -13,10 +13,6 @@ namespace TAHL.Transmission
         private float angle = 0;
         private float bulletAngle = 0;
         private float _lastShotTime = 0;
-        private float _deathTime = 0;
-
-        private bool _dissapear = false;
-
 
         public void Start()
         {
@@ -27,13 +23,6 @@ namespace TAHL.Transmission
 
         public void Update()
         {
-            if(_dissapear)
-            {
-                if(_deathTime + Globals.Delays.DEATH> Time.time)
-                    Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime);
-                return;
-            }
-
             // Check if last time shot and current time diff is greater when shoot delay
             if ((Time.time - _lastShotTime) > Globals.Delays.SHOT &&
                 Input.GetKeyDown(KeyCode.Mouse0))
@@ -64,12 +53,6 @@ namespace TAHL.Transmission
             {
                 _movement.FlipPlayer();
             }
-        }
-
-        public void Dissapear()
-        {
-            _deathTime = Time.time;
-            _dissapear = true;
         }
 
         /// <summary>
