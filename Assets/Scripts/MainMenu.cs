@@ -6,6 +6,11 @@ namespace TAHL.Transmission
     public class MainMenu : MonoBehaviour
     {
 
+        public void LoadSurvivalScene()
+        {
+            SceneManager.LoadScene((int)Globals.SceneIndex.SurvivalScene);
+        }
+
         public void LoadGame()
         {
             SceneManager.LoadScene((int)Globals.SceneIndex.Game1);
