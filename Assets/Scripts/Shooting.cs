@@ -66,7 +66,7 @@ namespace TAHL.Transmission
 
             // Instantiate bullet
             GameObject movingBullet = GameObject.Instantiate(bullet, _firePoint.transform.position, 
-                _movement.IsFacingRight ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0)
+                _movement.IsFacingRight ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0)
             ) as GameObject;
             movingBullet.transform.parent = null;
 
