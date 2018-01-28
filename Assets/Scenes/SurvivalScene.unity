@@ -374,11 +374,11 @@ Prefab:
       objectReference: {fileID: 2139986198}
     - target: {fileID: 1780556526823492, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1879417524247610, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1114326620760424, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
       propertyPath: m_Name
@@ -410,7 +410,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1552660588297962, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114870104597784616, guid: f0ca9e695d64964478815e7876795fe8,
         type: 2}

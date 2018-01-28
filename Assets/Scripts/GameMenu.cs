@@ -10,7 +10,7 @@ namespace TAHL.Transmission
         private GameObject _gameMenuDialog;
         public Text TimeLabel;
         
-        private int gameTime = 60;
+        private int gameTime = 59;
         private float startTime;
 
         private void Awake()

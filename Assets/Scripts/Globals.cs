@@ -55,11 +55,12 @@ namespace TAHL.Transmission
 
         public enum SceneIndex
         {
-            MainMenu = 0,
-            Game1 = 1,
-            HowToPlay = 2,
-            Credits = 3,
-            SurvivalScene = 4
+            Intro = 0,
+            MainMenu = 1,
+            Game1 = 2,
+            HowToPlay = 3,
+            Credits = 4,
+            SurvivalScene = 5
         }
 
         public static void RemoveCharacher(Transform transform, SpriteRenderer renderer, float deathTime)
