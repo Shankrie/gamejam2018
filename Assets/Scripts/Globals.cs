@@ -47,6 +47,7 @@ namespace TAHL.Transmission
             public const string Enemy = "Enemy";
             public const string Flour = "Flour";
             public const string Wall = "Wall";
+            public const string GameEndDialog = "GameEndDialog";
             public const string Untagged = "Untagged";
         }
 

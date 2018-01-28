@@ -14,13 +14,16 @@ namespace TAHL.Transmission
     {
         public Shooting Shooting = null;
         //public Image HealthBar;
-        public GameObject GameEndDialog;
 
         private Rigidbody2D _rb;
         private Animator _anim;
         private SpriteRenderer _spriteRenderer;
+
         private Movement _movement;
         private Enemy Enemy;
+
+        private GameObject _gameEndDialog;
+
         private float _deathTime = 0;
         private int _health = 100;
 
@@ -30,6 +33,8 @@ namespace TAHL.Transmission
         // Use this for initialization
         void Start()
         {
+            _gameEndDialog = GameObject.FindGameObjectWithTag(Globals.Tags.GameEndDialog);
+            _gameEndDialog.SetActive(false);
             if(Shooting == null)
                 throw new System.Exception("Add Shooting component to health component");
                 
@@ -81,11 +86,11 @@ namespace TAHL.Transmission
                 _deathTime = Time.time;
                 _anim.SetTrigger("death");
 
-                if (GameEndDialog != null)
+                if (_gameEndDialog != null)
                 {
                     Globals.GlobarVars.GameOverFlag = true;
                     PlayGameOverSound();
-                    GameEndDialog.SetActive(true);
+                    _gameEndDialog.SetActive(true);
                 }
 
                 Destroy(Shooting.gameObject);
