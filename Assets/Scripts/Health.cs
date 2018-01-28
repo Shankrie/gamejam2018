@@ -13,7 +13,8 @@ namespace TAHL.Transmission
     public class Health : MonoBehaviour
     {
         public Shooting Shooting = null;
-        public Image HealthBar;
+        //public Image HealthBar;
+        public GameObject GameEndDialog;
 
         private Rigidbody2D _rb;
         private Animator _anim;
@@ -58,7 +59,7 @@ namespace TAHL.Transmission
         public void InflictDamage(Globals.EnemyCollision coll, Vector2 bulletForce, int damage)
         {
             _health -= damage;
-            HealthBar.fillAmount = _health / 100;
+            //HealthBar.fillAmount = _health / 100;
             coll.lastHit = Time.time;
 
             if (_health <= 0)
@@ -71,6 +72,11 @@ namespace TAHL.Transmission
 
                 _deathTime = Time.time;
                 _anim.SetTrigger("death");
+
+                if (GameEndDialog != null)
+                {
+                    GameEndDialog.SetActive(true);
+                }
             }
         }
     }

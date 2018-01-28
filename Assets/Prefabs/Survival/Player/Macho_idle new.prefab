@@ -271,7 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1eb54186868b444ebfa1ed666ce2ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 0}
 --- !u!114 &114935905507221792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shooting: {fileID: 114461973873465074}
+  GameEndDialog: {fileID: 0}
 --- !u!212 &212111394173177892
 SpriteRenderer:
   m_ObjectHideFlags: 1
