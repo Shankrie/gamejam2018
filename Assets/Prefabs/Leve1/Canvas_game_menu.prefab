@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 114522912767458548}
   m_Layer: 5
   m_Name: TimePanel
-  m_TagString: GameEndDialog
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,11 +215,11 @@ GameObject:
   - component: {fileID: 114081934176812606}
   m_Layer: 5
   m_Name: GameEndDialog
-  m_TagString: Untagged
+  m_TagString: GameEndDialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1553588212095396
 GameObject:
   m_ObjectHideFlags: 1
@@ -353,11 +353,11 @@ GameObject:
   - component: {fileID: 114200012722602878}
   m_Layer: 5
   m_Name: GameWinDialog
-  m_TagString: Untagged
+  m_TagString: GameWinDialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1900014670154730
 GameObject:
   m_ObjectHideFlags: 1
@@ -1614,7 +1614,7 @@ RectTransform:
   - {fileID: 224395219218331620}
   - {fileID: 224191741724827018}
   m_Father: {fileID: 224657633700045922}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1653,7 +1653,7 @@ RectTransform:
   - {fileID: 224877130224251918}
   - {fileID: 224554500057026184}
   m_Father: {fileID: 224657633700045922}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1766,7 +1766,7 @@ RectTransform:
   m_Children:
   - {fileID: 224237332097441048}
   m_Father: {fileID: 224657633700045922}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}

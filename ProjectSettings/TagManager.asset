@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - GameEndDialog
   - MenuDialog
+  - GameWinDialog
   layers:
   - Default
   - TransparentFX
