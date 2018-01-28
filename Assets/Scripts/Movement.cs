@@ -50,7 +50,6 @@ namespace TAHL.Transmission {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 _direction = -1;
-                Debug.Log(_anim.GetBool(0));
                 _anim.SetBool("walk", true);
             }
             else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
