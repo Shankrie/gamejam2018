@@ -62,24 +62,6 @@ namespace TAHL.Transmission
             if ((angle > 0 && _movement.IsFacingRight) ||
                 (angle < 0 && !_movement.IsFacingRight))
             {
-                if (_movement.IsFacingRight)
-                {
-                    if(angle >= 135 && angle <= -135)
-                    {
-                        transform.rotation = Quaternion.Euler(0, 0, 135);
-                    }
-                    else
-                    {
-
-                        transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
-                    }
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Euler(180, 0, 0);
-                }
-
-
                 _movement.FlipPlayer();
             }
         }
