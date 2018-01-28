@@ -95,5 +95,21 @@ namespace TAHL.Transmission
                 transform.position -= new Vector3(3.5f * lastDirection, 0, 0);
             }
         }
+
+        private void PlayZombieAttack()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("zombie-attack");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+
+        }
+
+        private void PlayZombieVoice()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("zombie-sound");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+            audioSource.loop = !IsDead;
+        }
     }
 }
