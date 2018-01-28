@@ -9,27 +9,20 @@ namespace TAHL.Transmission {
     [RequireComponent(typeof(Health))]
     public class Movement : MonoBehaviour {
 
-        public Image HealthBar;
         public bool IsFacingRight { get {
                 return
                     transform.rotation.y > -1.01 &&
                     transform.rotation.y < -0.98;
             } }
 
+        private List<Globals.EnemyCollision> enemyCollisions = new List<Globals.EnemyCollision>();
         private Animator _anim;
         private Rigidbody2D _rb;
         private Health _health;
-        private int _direction = 0;
-        private float healthPoints = 100;
+
         private float damageCooldown = 2;
+        private int _direction = 0;
 
-        private List<EnemyCollision> enemyCollisions = new List<EnemyCollision>();
-
-        private class EnemyCollision
-        {
-            public GameObject obj;
-            public float lastHit;
-        }
 
         // Use this for initialization
         void Start() {
@@ -42,11 +35,11 @@ namespace TAHL.Transmission {
         void Update() {
             _rb.velocity = new Vector2(_direction * 8, 0);
 
-            foreach (EnemyCollision coll in enemyCollisions)
+            foreach (Globals.EnemyCollision coll in enemyCollisions)
             {
                 if (coll.lastHit + damageCooldown < Time.time)
                 {
-                    InflictDamage(coll);
+                    _health.InflictDamage(coll, Vector2.zero, Globals.Constants.ZOMBIE_DAMAGE);
                 }
             }
         }
@@ -74,11 +67,11 @@ namespace TAHL.Transmission {
         {
             if (other.gameObject.layer == 8)
             {
-                EnemyCollision coll = new EnemyCollision();
+                Globals.EnemyCollision coll = new Globals.EnemyCollision();
                 coll.obj = other.gameObject;
                 enemyCollisions.Add(coll);
 
-                InflictDamage(coll);
+                _health.InflictDamage(coll, Vector2.zero, Globals.Constants.ZOMBIE_DAMAGE);
             }
         }
 
@@ -86,7 +79,7 @@ namespace TAHL.Transmission {
         {
             if (other.gameObject.layer == 8)
             {
-                EnemyCollision coll = enemyCollisions.FirstOrDefault(colission => colission.obj.GetInstanceID() == other.gameObject.GetInstanceID());
+                Globals.EnemyCollision coll = enemyCollisions.FirstOrDefault(colission => colission.obj.GetInstanceID() == other.gameObject.GetInstanceID());
                 if (coll != null)
                 {
                     enemyCollisions.Remove(coll);
@@ -94,19 +87,6 @@ namespace TAHL.Transmission {
             }
         }
 
-        private void InflictDamage(EnemyCollision coll) {
-
-            if (healthPoints > 0)
-            {
-                healthPoints -= 100;
-                coll.lastHit = Time.time;
-
-                HealthBar.fillAmount = healthPoints / 100;
-
-                _health.InflictDamage(Vector2.zero, 100);
-                _anim.SetTrigger("death");
-            }
-        }
 
         public void FlipPlayer()
         {

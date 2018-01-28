@@ -8,20 +8,21 @@ namespace TAHL.Transmission
     [RequireComponent(typeof(Animator))]
     public class Enemy : MonoBehaviour {
 
+        public bool IsDead { get { return _isDead; } }
+
         private GameObject _player;
 
         private Rigidbody2D _rb;
         private SpriteRenderer _spriteRender;
         private Animator _anim;
 
-        public bool IsDead { get { return _isDead; } }
-
         private float _deathTime = 0;
+        private float _lastFlipTime = 0;
+
         private int _health = 100;
+        private int lastDirection = 1;
 
         private bool _isDead = false;
-
-        private const int DEATH_DELAY = 3;
 
         // Use this for initialization
         void Start() {
@@ -51,7 +52,7 @@ namespace TAHL.Transmission
 
             if(_isDead)
             {
-                if(_deathTime + DEATH_DELAY > Time.time)
+                if(_deathTime + Globals.Delays.DEATH > Time.time)
                 {
                     Globals.RemoveCharacher(transform, _spriteRender, _deathTime);
                 }
@@ -68,6 +69,13 @@ namespace TAHL.Transmission
                 direction = -1;
             }
 
+            if(lastDirection != direction && Time.time > _lastFlipTime + Globals.Delays.FLIP)
+            {
+                transform.rotation = Quaternion.Euler(0, direction == 1 ? 0 : 180, 0);
+                lastDirection = direction;
+                _lastFlipTime = Time.time;
+            }
+
             _rb.velocity = new Vector2(direction * 0.65f, _rb.velocity.y);
         }
 
@@ -77,10 +85,31 @@ namespace TAHL.Transmission
             if(_health <= 0)
             {
                 gameObject.tag = Globals.Tags.Untagged;
+
+                // shut down triggers for not to hit player when dead
+                transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+
                 _isDead = true;
                 _deathTime = Time.time;
                 _anim.SetTrigger("death");
+                transform.position -= new Vector3(3.5f * lastDirection, 0, 0);
             }
+        }
+
+        private void PlayZombieAttack()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("zombie-attack");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+
+        }
+
+        private void PlayZombieVoice()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("zombie-sound");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+            audioSource.loop = !IsDead;
         }
     }
 }

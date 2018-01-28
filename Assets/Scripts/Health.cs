@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TAHL.Transmission
 {
     // Be healthy and kill zombies
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(SpriteRenderer))]
     public class Health : MonoBehaviour
     {
         public Shooting Shooting = null;
+        public Image HealthBar;
 
-        private Rigidbody2D _rb ;
+        private Rigidbody2D _rb;
+        private Animator _anim;
         private SpriteRenderer _spriteRenderer;
         private Movement _movement;
         
@@ -21,7 +25,6 @@ namespace TAHL.Transmission
 
         private bool _isDead = false;
 
-        private const int DEATH_DELAY = 3;
 
         // Use this for initialization
         void Start()
@@ -30,6 +33,7 @@ namespace TAHL.Transmission
                 throw new System.Exception("Add Shooting component to health component");
                 
             _rb = GetComponent<Rigidbody2D>();
+            _anim = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _movement = GetComponent<Movement>();
         }
@@ -38,7 +42,7 @@ namespace TAHL.Transmission
         {
             if (_isDead)
             {
-                if(_deathTime + DEATH_DELAY > Time.time)
+                if(_deathTime + Globals.Delays.DEATH > Time.time)
                 {
                     Globals.RemoveCharacher(transform, _spriteRenderer, _deathTime);
                 }
@@ -51,9 +55,12 @@ namespace TAHL.Transmission
             }
         }
 
-        public void InflictDamage(Vector2 bulletForce, int damage)
+        public void InflictDamage(Globals.EnemyCollision coll, Vector2 bulletForce, int damage)
         {
             _health -= damage;
+            HealthBar.fillAmount = _health / 100;
+            coll.lastHit = Time.time;
+
             if (_health <= 0)
             {
                 _isDead = true;
@@ -63,6 +70,7 @@ namespace TAHL.Transmission
                 _rb.AddForce(bulletForce * 100);
 
                 _deathTime = Time.time;
+                _anim.SetTrigger("death");
             }
         }
     }
