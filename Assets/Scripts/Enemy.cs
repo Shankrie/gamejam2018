@@ -24,7 +24,7 @@ namespace TAHL.Transmission
 
         private int _health = 100;
         private int lastDirection = 1;
-
+        private bool _gameOver = false;
         private bool _isDead = false;
 
         // Use this for initialization
@@ -72,6 +72,12 @@ namespace TAHL.Transmission
                 return;
             }
 
+            if (Globals.GlobarVars.GameOverFlag)
+            {
+                AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+                audioSource.Stop();
+            }
+
             int direction = 1;
             if (_player.transform.position.x < transform.position.x)
             {
@@ -116,7 +122,8 @@ namespace TAHL.Transmission
             AudioClip clip = (AudioClip)Resources.Load("zombie-sound");
             AudioSource audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.PlayOneShot(clip);
-            audioSource.loop = !IsDead;
+            
+            audioSource.loop = !IsDead && !Globals.GlobarVars.GameOverFlag;
         }
     }
 }

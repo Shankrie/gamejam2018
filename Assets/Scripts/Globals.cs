@@ -36,6 +36,11 @@ namespace TAHL.Transmission
             public const int PLAYER_DAMAGE = 100;
         }
 
+        public static partial class GlobarVars
+        {
+            public static bool GameOverFlag = false;
+        }
+
         public static partial class Tags
         {
             public const string Player = "Player";
