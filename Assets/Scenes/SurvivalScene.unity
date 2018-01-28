@@ -408,7 +408,7 @@ Prefab:
         type: 2}
       propertyPath: GameMenuDialog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 725098010}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1d7344a9280c684c950bfd38593a475, type: 2}
   m_IsPrefabParent: 0
