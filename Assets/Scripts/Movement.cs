@@ -72,6 +72,7 @@ namespace TAHL.Transmission {
 
         void OnTriggerEnter2D(Collider2D other)
         {
+            PlayZombieAttack();
             if (other.gameObject.layer == 8)
             {
                 Globals.EnemyCollision coll = new Globals.EnemyCollision();
@@ -94,6 +95,13 @@ namespace TAHL.Transmission {
             }
         }
 
+        private void PlayZombieAttack()
+        {
+            AudioClip clip = (AudioClip)Resources.Load("zombie-attack");
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+
+        }
 
         public void FlipPlayer()
         {

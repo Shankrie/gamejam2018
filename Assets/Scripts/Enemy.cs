@@ -29,6 +29,7 @@ namespace TAHL.Transmission
 
         // Use this for initialization
         void Start() {
+            PlayZombieVoice();
             _player = GameObject.FindGameObjectWithTag(Globals.Tags.Player);
             if (_player == null)
                 throw new Exception("Player object is required to be in scene");
@@ -108,14 +109,6 @@ namespace TAHL.Transmission
                 _deathTime = Time.time;
                 _anim.SetTrigger("death");
             }
-        }
-
-        private void PlayZombieAttack()
-        {
-            AudioClip clip = (AudioClip)Resources.Load("zombie-attack");
-            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.PlayOneShot(clip);
-
         }
 
         private void PlayZombieVoice()
