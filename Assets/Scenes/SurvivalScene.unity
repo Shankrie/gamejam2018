@@ -236,8 +236,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15e4e68e4cc008845a358af8f3b1ade7, type: 2}
   m_IsPrefabParent: 0
-  m_Script: {fileID: 11500000, guid: c1eb54186868b444ebfa1ed666ce2ebb, type: 3}
-  HealthBar: {fileID: 727766032}
 --- !u!114 &727766032 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114616494745015328, guid: f0ca9e695d64964478815e7876795fe8,
@@ -615,6 +613,10 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 14001045}
+    - target: {fileID: 1374170316155854, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0ca9e695d64964478815e7876795fe8, type: 2}
   m_IsPrefabParent: 0
